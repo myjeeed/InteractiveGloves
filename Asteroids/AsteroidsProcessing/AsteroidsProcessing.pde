@@ -134,8 +134,17 @@ void getData(Serial myPort) {
       ship.acceleration.mult(shipSpeed);
     }
     if (touch1 == 0 || touch2 == 0 || touch3 == 0 || touch4 == 0) {
-      // any finger can fire
-      fireBullet();
+      // fire bullets in the game, or simulate a mouse click otherwise
+      if (lives < 0) {
+        stage = -1;
+        lives = 3;
+        asteroids = new ArrayList<Asteroid>(0);
+      } else  if (asteroids.size()==0) {
+        stage++;
+        reset();
+      } else if (ship != null) {
+        fireBullet();
+      }
     }
   }
 }
@@ -151,7 +160,10 @@ void draw() {
     ship.render();
     if (ship.checkCollision(asteroids)) {
       lives--;
-      myPort.write('v');
+      int t = millis();
+      while (millis() - t < 50) {
+        myPort.write('v');
+      }
       ship = new Ship();
     }
     
@@ -265,7 +277,7 @@ void draw() {
   }
 }
 
-void mousePressed(){
+/*void mousePressed(){
   if (lives < 0) {
     stage = -1;
     lives = 3;
@@ -274,7 +286,7 @@ void mousePressed(){
     stage++;
     reset();
   }
-}
+}*/
 
 void reset(){
   ship  = new Ship();

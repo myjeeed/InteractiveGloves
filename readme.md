@@ -27,4 +27,8 @@ This demonstrates all the different sensors on the glove. A 3D cube rotates with
 
 ## Pacman Gloves
 
-The accelerometer and flex sensors are used detect orientation of the hand, which is used to control a game of pacman.
+The accelerometer and flex sensors are used detect orientation of the hand, which is used to control a game of pacman.  The original pacman game code is from [this sketch by Laurel Deel](http://www.openprocessing.org/sketch/46944).
+
+## Asteroids
+
+The base game is borrowed from [this sketch by Mark Gillespie](http://www.openprocessing.org/sketch/106239). Instead of the original WASD/space controls, the motion is now controlled by the accelerometer, and laser fire and mouse clicks by the touch pads. The ship speed also varies with the flex sensor readings, and a small vibration occurs when you crash.
