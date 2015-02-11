@@ -44,6 +44,7 @@ void setup() {
 }
 
 void draw () {
+  getData(myPort);
   float bg = (touch4 == 0)?100:200;
   background(bg);
   drawBox();
@@ -76,7 +77,7 @@ void drawBox() {
   box(w,h,d);
 }
 
-void serialEvent(Serial myPort) {
+void getData(Serial myPort) {
   String myString = myPort.readStringUntil('\n');
   if (myString != null) {
     myString = trim(myString);

@@ -18,8 +18,11 @@ const int accelX = 0;
 const int accelY = 1;
 const int accelZ = 2;
 
+int vibeStart;
+
 void setup()
 {
+  vibeStart = 0;
   pinMode(vibePin, OUTPUT);
   Serial.begin(9600);
 }
@@ -61,5 +64,15 @@ void loop()
   str += t4;
   
   Serial.println(str);
-  digitalWrite(vibePin,!t4);
+
+  char x = Serial.read();
+  if (x == 'v') {
+    digitalWrite(vibePin, HIGH);
+    vibeStart = millis();
+  }
+  
+  if (millis() - vibeStart > 200) {
+    digitalWrite(vibePin, LOW);
+    vibeStart = 0;
+  }
 }
