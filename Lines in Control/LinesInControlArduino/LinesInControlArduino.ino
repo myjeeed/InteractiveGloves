@@ -1,43 +1,26 @@
 // pin assignments
-
-// digital output
-const int vibePin = 4;
-
-// digital inputs
-const int touch1 = 9;  // because 13 was not working :(
-const int touch2 = 12;
-const int touch3 = 11;
-const int touch4 = 10;
-
-// analog inputs
-const int flex1 = 5;
-const int flex2 = 4;
-const int flex3 = 3;
-
-const int accelX = 0;
-const int accelY = 1;
-const int accelZ = 2;
+#include "GloveConfig.h"
 
 void setup()
 {
-  pinMode(vibePin, OUTPUT);
+  pinMode(VIBE_PIN, OUTPUT);
   Serial.begin(9600);
 }
 
 void loop()
 {
-  float ax = analogRead(accelX);
-  float ay = analogRead(accelY);
-  float az = analogRead(accelZ);
+  float ax = analogRead(ACCEL_X);
+  float ay = analogRead(ACCEL_Y);
+  float az = analogRead(ACCEL_Z);
   
-  float f1 = analogRead(flex1);
-  float f2 = analogRead(flex2);
-  float f3 = analogRead(flex3);
+  float f1 = analogRead(FLEX_1);
+  float f2 = analogRead(FLEX_2);
+  float f3 = analogRead(FLEX_3);
   
-  int t1 = digitalRead(touch1);
-  int t2 = digitalRead(touch2);
-  int t3 = digitalRead(touch3);
-  int t4 = digitalRead(touch4);
+  int t1 = digitalRead(TOUCH_1);
+  int t2 = digitalRead(TOUCH_2);
+  int t3 = digitalRead(TOUCH_3);
+  int t4 = digitalRead(TOUCH_4);
   
   String str = "";
   str += ax;
@@ -61,5 +44,5 @@ void loop()
   str += t4;
   
   Serial.println(str);
-  digitalWrite(vibePin,!t4);
+  digitalWrite(VIBE_PIN,!t4);
 }
