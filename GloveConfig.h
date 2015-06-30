@@ -9,11 +9,11 @@
 
 // analog inputs, flex resistors
 #define FLEX_1 5
-#define FLEX_3 4
+#define FLEX_2 4
 #define FLEX_3 3
 
 //Accelerometer
 #define ACCEL_X 0
-#define ACCEL_y 1
-#define ACCEL_z 2
+#define ACCEL_Y 1
+#define ACCEL_Z 2
 
