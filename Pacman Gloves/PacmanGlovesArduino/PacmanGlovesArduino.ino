@@ -1,3 +1,5 @@
+#include "GloveConfig.h"
+
 float xZero = 500, yZero = 570, zZero = -430;
 float xAcc = 0, yAcc = 0, zZAcc = 0;
 float roll = 0, pitch = 0, yaw = 0;
@@ -17,15 +19,16 @@ boolean calibrated = false;
 
 void loop()
 {
-  float xAcc = (analogRead(0) - xZero)/scale;
-  float yAcc = (analogRead(1) - yZero)/scale;
-  float zAcc = (analogRead(2) - zZero)/scale;
+  float xAcc = (analogRead(ACCEL_X) - xZero)/scale;
+  float yAcc = (analogRead(ACCEL_Y) - yZero)/scale;
+  float zAcc = (analogRead(ACCEL_Z) - zZero)/scale;
   
   pitch = (atan(xAcc/sqrt(pow(yAcc, 2) + pow(zAcc, 2))) * (180/PI));
   roll = (atan(yAcc/sqrt(pow(xAcc, 2) + pow(zAcc, 2))) * (180/PI));
   yaw = (acos(zAcc/sqrt(pow(xAcc, 2) + pow(yAcc, 2) + pow(zAcc, 2))) * (180/PI));
   
-  float  val = (analogRead(3) + analogRead(4) + analogRead(5))/3;
+  float  val = (analogRead(FLEX_3) + analogRead(FLEX_2) + analogRead(FLEX_1))/3;
+  
 /*  
   if(!calibrated && firstRead)
   {
