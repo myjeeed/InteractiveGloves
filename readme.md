@@ -21,6 +21,14 @@ The pins are as follows:
 
 Each application folder contains folders for the corresponding Arduino and Processing files.  (Several of the Arduino files are the same (or very similar), but we put copies in each folder to avoid confusion.)
 
+
+## Running / Development
+
+Arduino code can be edited, compiled, and sent to an arduino board using the [Arduino IDE](https://www.arduino.cc/en/Main/Software)
+
+Processing code runs on the PC. Edit, build and run from the [processing IDE.](https://processing.org/download/?processing)
+
+
 ## Asteroids
 
 The base game is borrowed from [this sketch by Mark Gillespie](http://www.openprocessing.org/sketch/106239). Instead of the original WASD/space controls, the motion is now controlled by the accelerometer, and laser fire and mouse clicks by the touch pads. The ship speed also varies with the flex sensor readings, and a small vibration occurs when you crash.
@@ -40,3 +48,4 @@ The accelerometer and flex sensors are used detect orientation of the hand, whic
 ## Presenter
 
 The Processing file here makes use of Java's Robot class (thanks to [this gist](https://gist.github.com/Powder/3775852) for inspiration!) to send keystrokes to a program.  In this case, we use the first two fingers to send right/left signals, suitable for something like a Powerpoint presentation.
+
